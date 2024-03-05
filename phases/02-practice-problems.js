@@ -30,13 +30,24 @@ function commonElements(arr1, arr2) {
 
 
 function duplicate(arr) {
-  
+
   // Your code here
+  let nSet = new Set();
+
+  for(let i = 0; i < arr.length; i += 1) {
+    if(nSet.has(arr[i])) {
+      return arr[i]
+    } else {
+      nSet.add(arr[i]);
+    }
+  }
 }
 
 
 function twoSum(nums, target) {
   // Your code here
+  
+
 }
 
 
