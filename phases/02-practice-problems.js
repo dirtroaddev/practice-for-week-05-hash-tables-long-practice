@@ -46,13 +46,46 @@ function duplicate(arr) {
 
 function twoSum(nums, target) {
   // Your code here
+  let nSet = new Set();
   
+  for(let i = 0; i < nums.length; i += 1) {
+    let compliment =target - nums[i];
+    if(nSet.has(compliment)) {
+      return true;
+    } else {
+      nSet.add(nums[i]);
+    }
+  }
+  
+  return false;
 
 }
 
 
 function wordPattern(pattern, strings) {
-  // Your code here
+  if (pattern.length !== strings.length) {
+    return false; // Early return if lengths differ, cannot match
+  }
+
+  const charToWord = new Map();
+  const wordToChar = new Map();
+
+  for (let i = 0; i < pattern.length; i++) {
+    const char = pattern[i];
+    const word = strings[i];
+
+    // Check if the mapping exists in either map
+    if ((charToWord.has(char) && charToWord.get(char) !== word) ||
+        (wordToChar.has(word) && wordToChar.get(word) !== char)) {
+      return false; // Mismatch found
+    }
+
+    // Create mapping if not already present
+    charToWord.set(char, word);
+    wordToChar.set(word, char);
+  }
+
+  return true; // All elements matched correctly
 }
 
 
